@@ -2,6 +2,8 @@ from functools import partial
 import sys
 import os
 
+os.environ.setdefault("PROTOCOL_BUFFERS_PYTHON_IMPLEMENTATION", "python")
+
 from .multiagentenv import MultiAgentEnv
 
 try:

@@ -121,11 +121,25 @@ def run(_run, _config, _log):
             tb_exp_direc = os.path.join(tb_logs_direc, logdir, unique_token)
         logger.setup_tb(tb_exp_direc)
 
+    if args.use_wandb:
+        task_name = args.task_name or args.env_args.get("map_name", args.env)
+        wandb_name = args.wandb_name or "{}_s{}_{}".format(args.name, args.seed, task_name)
+        logger.setup_wandb(
+            project=args.wandb_project,
+            name=wandb_name,
+            mode=args.wandb_mode,
+            group=args.wandb_group,
+            config=_config,
+        )
+
     # sacred is on by default
     logger.setup_sacred(_run)
 
     # Run and train
-    run_sequential(args=args, logger=logger)
+    try:
+        run_sequential(args=args, logger=logger)
+    finally:
+        logger.close()
 
     # Clean up after finishing
     print("Exiting Main")

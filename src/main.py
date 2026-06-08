@@ -1,7 +1,9 @@
+import os
+os.environ["PROTOCOL_BUFFERS_PYTHON_IMPLEMENTATION"] = "python"
+
 import random
 
 import numpy as np
-import os
 import collections
 from os.path import dirname, abspath, join
 from copy import deepcopy
