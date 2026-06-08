@@ -70,7 +70,7 @@ class Logger:
             "test_return_mean": ["eval_returns"],
             "ep_length_mean": ["epi_length", "average_episode_length"],
             "test_ep_length_mean": ["eval_avg_epi_len", "eval_average_episode_length"],
-            "battle_won_mean": ["win", "incre_win_rate"],
+            "battle_won_mean": ["win"],
             "test_battle_won_mean": ["eval_win_rate", "test_win_rate"],
         }
         for alias in aliases.get(key, []):
